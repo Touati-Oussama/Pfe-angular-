@@ -1,0 +1,66 @@
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Espace Etudiant
+            </div>
+
+   <li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Stage Obligatoire</span>
+    </a>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Stage PFE:</h6>
+            <a class="collapse-item active" routerLink="demandeStage">Demande Formulaire</a>
+            <a class="collapse-item active" routerLink="ajouterFile">Deposer Stage</a>
+            <a class="collapse-item active">Plus d'infos</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Encadrement</span>
+    </a>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Encadrement PFE:</h6>
+            <a class="collapse-item active" routerLink="demandeEncadrement">Demande Encadrement</a>
+            <a class="collapse-item active" (click)="consulter()">Consulter les commentaires</a>
+            <a class="collapse-item active" routerLink="listeDemandeEtud">Les listes des demandes</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item active">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Soutenance</span>
+    </a>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Soutenance PFE:</h6>
+            <a class="collapse-item active" routerLink="listeSoutenanceEtud">Liste Soutenance</a>
+        </div>
+    </div>
+</li>

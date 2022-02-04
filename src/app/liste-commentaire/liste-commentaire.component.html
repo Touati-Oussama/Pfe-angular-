@@ -1,0 +1,50 @@
+
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800"  *ngIf ="sujet != 'undefined'"> liste des commentaires de sujet <span class="danger">{{sujet}} </span></h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3" *ngIf ="sujet == 'undefined'">
+                <div class="alert alert-danger">
+                    Il faut avoir un pfe pour saisir des commentaires !
+                </div>
+            </div>
+            <div class="card-header py-3" *ngIf ="sujet != 'undefined'">
+                <h6 class="m-0 font-weight-bold text-primary">  Voici les  commentaires de sujet <span class="danger">{{sujet}} </span></h6>
+            </div>
+            <input type="search" placeholder="Search">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <button class="btn btn-primary" [disabled]= "!data && this.authService.isEtud" (click)="add()">Ajouter un commentaire</button>
+                    <div *ngIf="nb == 0">
+                        <div class="alert alert-success">
+                            <strong> Aucune commentaire  pour le moment! …</strong>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ecrit Par</th>
+                                <th>commentaire</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of commentaires ">
+                                <td> {{c.id}}</td>
+                                <td> {{c.owner}}</td>
+                                <td> {{c.commentaire}}</td>
+                                <td>{{c.date | date:'short':'UTC'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

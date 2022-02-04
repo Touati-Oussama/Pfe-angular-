@@ -1,0 +1,177 @@
+<!--
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+            
+                <div class="row" >
+                    <div class="col-lg-10">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Planification de Soutenance  {{sujet}}</h1>
+                            </div>
+                            <form class="user" [formGroup]= "data" (ngSubmit)="ajouter()"> 
+                                
+                                <div *ngIf="errorSFE!=''" class="alert alert-danger">
+                                    {{errorSFE}}
+                                </div>
+                                <div  class="alert alert-danger" *ngIf="errorSalle!=''">
+                                    {{errorSalle}}
+                                </div>
+                                <div  class="alert alert-success" *ngIf=" successMsg!=''">
+                                    {{ successMsg}}
+                                </div>
+
+                                <div *ngIf="errorPresident!=''" class="alert alert-danger">
+                                    {{errorPresident}}
+                                </div>
+                                <div *ngIf="errorRapporteur!=''" class="alert alert-danger">
+                                    {{errorRapporteur}}
+                                </div>
+
+                                <div *ngIf="errorChoix!=''" class="alert alert-danger">
+                                    {{errorChoix}}
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                        formControlName="sfe"
+                                            id="exampleFirstName" value="{{sujet}}" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                        formControlName="encadreur"
+                                         id="exampleLastName" value="{{encadreur}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <select class="form-control" formControlName="presidant" >
+                                            <option value="">Choisir le Président</option>
+                                            <option [value]="p.ncen" *ngFor="let p of presidents">{{p.nom}} {{p.prenom}}</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" formControlName="rapporteur" >
+                                            <option value="">Choisir le rapporteur</option>
+                                            <option [value]="p.ncen" *ngFor="let p of rapporteurs">{{p.nom}} {{p.prenom}}</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="datetime-local" class="form-control form-control-user"
+                                        formControlName="date"
+                                            id="exampleFirstName" placeholder="Date">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                        formControlName="salle"
+                                             id="exampleLastName" placeholder="Salle">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block" >Ajouter</button>
+                                <button type="submit" class="btn btn-danger btn-user btn-block">Annuler</button>
+                                <hr>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>-->
+
+
+<div class="card">
+    <a routerLink="/demandeSoutenance"><span class="glyphicon glyphicon-arrow-left">Retour</span></a>
+    <h4 class="card-header">Planification Soutenance</h4>
+    <div class="card-body">
+
+        <form class="user" [formGroup]= "data" (ngSubmit)="ajouter()">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Planification de Soutenance</h1>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="successMsg!=''" >
+                <strong>Success!</strong> your request is sent. Awaiting acceptance by the administration.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div *ngIf="errorSFE!=''" class="alert alert-danger">
+                {{errorSFE}}
+            </div>
+            <div  class="alert alert-danger" *ngIf="errorSalle!=''">
+                {{errorSalle}}
+            </div>
+              <div *ngIf="errorPresident!=''" class="alert alert-danger">
+                {{errorPresident}}
+            </div>
+            <div *ngIf="errorRapporteur!=''" class="alert alert-danger">
+                {{errorRapporteur}}
+            </div>
+
+            <div *ngIf="errorChoix!=''" class="alert alert-danger">
+                {{errorChoix}}
+            </div>
+
+            <div class="form-group">
+                <label for="nom">Sujet</label>
+                <input type="text" class="form-control form-control-user" formControlName="sfe" id="exampleFirstName" value="{{sujet}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Encadreur</label>
+                <input type="text" class="form-control form-control-user" formControlName="encadreur" id="exampleLastName" value="{{encadreur}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="Telephone">President</label>
+                <select class="form-control" formControlName="presidant"  (change)="onChange($event.target.value)" >
+                    <option value="">Choisir le Président</option>
+                    <option [value]="p.ncen" *ngFor="let p of presidents">{{p.nom}} {{p.prenom}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Rapporteur</label>
+                <select class="form-control" formControlName="rapporteur" (change)="onChange($event.target.value)">
+                    <option value="">Choisir le rapporteur</option>
+                    <option [value]="p.ncen" *ngFor="let p of rapporteurs">{{p.nom}} {{p.prenom}}</option>
+                    
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label for="password">Date</label>
+
+                <input type="datetime-local" class="form-control form-control-user"
+                formControlName="date"
+                    id="exampleFirstName" placeholder="Date">
+            </div>
+            <div class="form-group">
+                <label for="">Salle</label>
+                <select class="form-control" formControlName="salle" (change)="onChange($event.target.value)">
+                    <option value="">Choisir la Salle</option>
+                    <option [value]="s.id" *ngFor="let s of salles">{{s.nom}}</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="reset" class="btn btn-danger">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>

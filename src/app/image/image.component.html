@@ -1,0 +1,52 @@
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Liste des Salles</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste des Salles Disponibles </h6>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success != ''">
+                <strong>Success!</strong> {{success}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error != ''">
+                <strong>Error!</strong> {{error}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <button class="btn btn-primary" routerLink="ajouterSalle">Ajouter une Salle</button>
+                    <input type="search" placeholder="Search" (input)="filte($event.target.value)">
+                    <table class="table table-bordered" id="dataTable"  cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Salle</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of Filterdata" >
+                                <td>{{d.id}}</td>
+                                <td>{{d.nom}}</td>
+                                <td><button class="btn btn-success btn-sm" (click)="modifier(d.id)">Modifier</button></td>
+                                <td><button class="btn btn-danger btn-sm" (click)="supprimer(d.id)">Supprimer</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

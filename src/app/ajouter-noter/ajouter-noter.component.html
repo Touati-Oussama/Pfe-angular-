@@ -1,0 +1,23 @@
+<form [formGroup]= "data" (ngSubmit)="ajouter()">
+    <h3>Ajout d'une note</h3>
+    <div class="alert alert-danger" *ngIf="msg != ''">  
+          {{msg}}
+      </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">SoutenanceId</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{id}}" readonly>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Note</label>
+      <input type="number"formControlName="note" max="20" min="0" class="form-control" id="exampleInputPassword1" placeholder="Note">
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button  class="btn btn-danger">Annuler</button>
+    <div class="alert alert-success" *ngIf="successMsg!=''">
+        {{successMsg}}
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMsg!=''">
+        {{errorMsg}}
+    </div>
+  </form>

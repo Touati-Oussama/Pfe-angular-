@@ -1,0 +1,124 @@
+<!--<body class="bg-gradient-primary">
+
+    <div class="container">
+
+    
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                     
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf=" erreur == 1">
+                                        Invalid login or password
+                                    </div>
+                                    <form class="user" [formGroup] = "UserData" (ngSubmit) = "onLoggedin()">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                formControlName="email"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                            formControlName="password"
+                                                id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-user btn-block" [disabled]=" !UserData.valid ">
+                                            Login
+                                        </button>
+                                        <hr>
+                                        <a routerLink="signInEtud" class="btn btn-google btn-user btn-block">
+                                            Student ? Create an Account
+                                        </a>
+                                        <a routerLink="signInEn" class="btn btn-facebook btn-user btn-block">
+                                            Teacher ? Create an Account
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>-->
+
+
+
+<div class="card">
+    <h4 class="card-header">Welcome Back ! </h4>
+    <div class="card-body">
+        <form class="user" [formGroup] = "UserData" (ngSubmit) = "onLoggedin()">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Login Form</h1>
+            </div>
+            <div class="alert alert-danger" *ngIf=" erreur == 1">
+                Invalid login or password
+            </div>
+            <div class="alert alert-danger" *ngIf=" error != ''">
+                {{error}}
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text"  (input)="filte($event.target.value)" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email est obliggatoire required</div>
+                    <div *ngIf="f.email.errors.email">Email doit étre ---@---.--</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" (input)="filte($event.target.value)" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Annuler
+                </button>
+            </div>
+            <hr>
+            <a routerLink="signInEtud" class="btn btn-success btn-user btn-block">
+                Student ? Create an Account
+            </a>
+            <a routerLink="signInEn" class="btn btn-facebook btn-user btn-block">
+                Teacher ? Create an Account
+            </a>
+        </form>
+    </div>
+</div>
+
+
+

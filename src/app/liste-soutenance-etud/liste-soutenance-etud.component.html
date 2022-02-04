@@ -1,0 +1,50 @@
+
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800"> <span>Planification de Soutenance </span></h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"> <span> Voic la Planification de Votre soutenance </span></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div *ngIf="result != ''">
+                        <div class="alert alert-success">
+                            <strong> {{result}}</strong>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Sujet</th>
+                                <th>Encadreur</th>
+                                <th>Présidant</th>
+                                <th>Rapporteur</th>
+                                <th>Salle</th>
+                                <th>Date</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> {{data.sfe}}</td>
+                                <td> {{data.encadreur}}</td>
+                                <td> {{data.president}}</td>
+                                <td> {{data.rapporteur}}</td>
+                                <td> {{data.salle}}</td>
+                                <td> {{data.date | date:'short'}}</td>
+                                <td *ngIf="note != 0 " ><span >{{note}}</span></td>
+                                <td *ngIf="note == 0 "><span  class="bg-danger text-white badge">En Cours</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

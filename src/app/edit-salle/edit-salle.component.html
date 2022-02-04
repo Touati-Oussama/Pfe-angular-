@@ -1,0 +1,42 @@
+<div class="card">
+    <a routerLink="/image"><span class="glyphicon glyphicon-arrow-left">Retour</span></a>
+    <h4 class="card-header">Modification des Salles</h4>
+    <div class="card-body">
+
+        <form class="user" [formGroup]="SalleData" (ngSubmit)="modifier()">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Modification d'une salle</h1>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorNom != '' ">
+                <strong>Erro !</strong> {{errorNom}}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+                <strong>Error!</strong> {{error}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="form-group">
+                <label for="nom">Salle</label>
+                <input type="text"  (input)="filte($event.target.value)"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                    <div *ngIf="f.nom.errors.required">Le nom est  obligatoire</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-success">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Modifier
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Annuler
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

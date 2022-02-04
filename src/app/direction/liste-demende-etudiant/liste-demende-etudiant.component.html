@@ -1,0 +1,56 @@
+
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Liste des etudiants</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste des demandes des inscriptions  des etudiants</h6>
+            </div>
+            <input type="search" placeholder="Search" (input)="filte($event.target.value)">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div *ngIf="nbEtudiants == 0">
+                        <div class="alert alert-success">
+                            <strong> Aucune demande d'inscription pour le moment! …</strong>
+                        </div>
+                    </div>
+                    <div class="alert alert-success" *ngIf="successMsg!=''">
+                        {{successMsg}}
+                    </div>
+                    <div class="alert alert-success" *ngIf="errorMsg!=''">
+                        {{errorMsg}}
+                    </div>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th>Telephone</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of Filterdata" >
+                                <td>{{d.id}}</td>
+                                <td>{{d.nom}}</td>
+                                <td>{{d.prenom}}</td>
+                                <td>{{d.email}}</td>
+                                <td>{{d.telephone}}</td>
+                                <td> <a class="btn btn-success btn-sm" style="margin-right: 15px; color: aliceblue;" (click)="ajouterEtudiant(d)">Accepter</a></td>
+                                <td> <a  class="btn btn-danger btn-sm"  style="color: aliceblue;"(click)="supprimerEtudiant(d)">Supprimer</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

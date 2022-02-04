@@ -1,0 +1,28 @@
+
+<div class="login-page">
+    <div class="form">
+        <h3>Demande d'encadrement</h3>
+        <div class="alert alert-success" *ngIf="successMsg!=''">
+            {{successMsg}}
+        </div>
+        <div class="alert alert-danger" *ngIf="errorMsg!=''">
+            {{errorMsg}}
+        </div>
+        <div class="alert alert-danger" *ngIf="msg!=''">
+            {{msg}}
+        </div>
+        <form [formGroup]="Demande" class="login-form" (ngSubmit)="ajouter()">
+            <div>
+                <label> Enseignant: </label>
+                <input type="text" formControlName="enseignant" value="{{nomEns}}  {{prenomEns}}" disabled/>
+            </div>
+            <div>
+                <label> Sujet: <span *ngIf="Demande.controls.sujet.valid == false">*</span></label>
+                <input type="textarea" formControlName="sujet" />
+            </div>
+        
+            <button type="submit" [disabled]=" !Demande.valid "  class="btn btn-info btn-sm">Valider </button><button
+                type="reset"  routerLink="demandeEncadrement" class="btn btn-danger btn-sm">Reset</button>
+        </form>
+    </div>
+</div>

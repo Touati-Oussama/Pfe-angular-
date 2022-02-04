@@ -1,0 +1,79 @@
+<!--<div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Etudiants</h1>
+        <a routerLink="/etudiants/add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of data" >
+                        <td>{{d.id}}</td>
+                        <td>{{d.nom}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>-->
+
+
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Liste des etudiants</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Liste des Etudiants</h6>
+            </div>
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div class="alert alert-danger" *ngIf="errorMsg != ''">
+                        {{errorMsg}}
+                    </div>
+                    <div class="alert alert-danger" *ngIf="errorDelete != ''">
+                        {{errorDelete}}
+                    </div>
+                    <input type="search" placeholder="Search" (input)="filte($event.target.value)">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th>Telephone</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of Filterdata" >
+                                <td>{{d.id}}</td>
+                                <td>{{d.nom}}</td>
+                                <td>{{d.prenom}}</td>
+                                <td>{{d.email}}</td>
+                                <td>{{d.telephone}}</td>
+                                <button class="btn btn-success btn-sm" [routerLink]= " 'updateEtudiant/'+d.id ">Modifier</button>
+                                <button class="btn btn-danger btn-sm" (click)= "delete(d.id)">Supprimer</button>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

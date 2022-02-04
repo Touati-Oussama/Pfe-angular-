@@ -1,0 +1,257 @@
+
+<!--<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account Teacher !</h1>
+                            </div>
+                            <form class="user" [formGroup]="EnseignantData" (ngSubmit)="ajouter()">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" formControlName="nom"  id="exampleFirstName"
+                                            placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" formControlName="prenom" id="exampleLastName"
+                                            placeholder="Last Name">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control form-control-user"
+                                            formControlName="telephone" id="exampleLastName" placeholder="Telephone">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="alert alert-danger" *ngIf="msg!=''">
+                                            {{msg}}
+                                        </div>
+                                        <input type="email" formControlName="email" class="form-control form-control-user"
+                                        id="exampleInputEmail" placeholder="Email Address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password"  formControlName="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block" [disabled]=" !EnseignantData.valid ">Register Account</button>
+                                <hr>
+                                <div class="alert alert-success" *ngIf="successMsg!=''">
+                                    {{successMsg}}
+                                </div>
+                                <div class="alert alert-success" *ngIf="errorMsg!=''">
+                                    {{errorMsg}}
+                                </div>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>-->
+
+
+
+
+<!--<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account Student!</h1>
+                            </div>
+                            <form class="user" [formGroup]="EtudiantData" (ngSubmit)="ajouter()">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" formControlName="nom"
+                                            id="exampleFirstName" placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                            formControlName="prenom" id="exampleLastName" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control form-control-user"
+                                        [ngClass]="  EtudiantData.controls.telephone.valid == true ? 'form-success':'form-danger' "
+                                            formControlName="telephone" id="exampleLastName" placeholder="Telephone">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="alert alert-danger" *ngIf="msg!=''">
+                                            {{msg}}
+                                        </div>
+                                        
+                                        <input type="email" formControlName="email" class="form-control form-control-user"
+                                        id="exampleInputEmail" placeholder="Email Address"
+                                        [ngClass]="  EtudiantData.controls.email.valid == true ? 'form-success':'form-danger' " >
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" formControlName="password"
+                                            class="form-control form-control-user" id="exampleInputPassword"
+                                            placeholder="Password"
+                                            [ngClass]="  EtudiantData.controls.password.valid == true ? 'form-success':'form-danger' ">
+                                    </div>
+                                    <div class="alert alert-danger" *ngIf="errorPass!=''">
+                                        {{errorPass}}
+                                    </div>
+                                    <div class="col-sm-6">
+                                       
+                                        <input type="password" class="form-control form-control-user"
+                                            formControlName="repeatPassword"
+                                            [ngClass]="  EtudiantData.controls.repeatPassword.valid == true ? 'form-success':'form-danger' "
+                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block"
+                                    [disabled]=" !EtudiantData.valid ">Register Account</button>
+                                <hr>
+                                <div class="alert alert-success" *ngIf="successMsg!=''">
+                                    {{successMsg}}
+                                </div>
+                                <div class="alert alert-danger" *ngIf="errorMsg!=''">
+                                    {{errorMsg}}
+                                </div>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>-->
+
+
+<div class="card">
+    <a routerLink="/login"><span class="glyphicon glyphicon-arrow-left">Retour</span></a>
+    <h4 class="card-header">Demande Inscription</h4>
+    <div class="card-body">
+        <form class="user" [formGroup]="EnseignantData" (ngSubmit)="ajouter()">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Demande d'inscription enseignant</h1>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="ok == 1">
+                <strong>Success!</strong> your request is sent. Awaiting acceptance by the administration.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="ok == 2">
+                <strong>Error!</strong> Something went wrong.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" (input)="filte($event.target.value)" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                    <div *ngIf="f.nom.errors.required">Le nom est  obligatoire</div>
+                    <div *ngIf="f.nom.errors.minlength">Nom must be at least 3 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom</label>
+                <input type="text" (input)="filte($event.target.value)" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                    <div *ngIf="f.prenom.errors.required">Le prenom est obligatoire</div>
+                    <div *ngIf="f.prenom.errors.minlength">Prenom must be at least 3 characters</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Telephone">Telephone</label>
+                <input type="number" (input)="filte($event.target.value)" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
+                <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                    <div *ngIf="f.telephone.errors.required">Le Telephone est obligatoire</div>
+                    <div *ngIf="f.telephone.errors.minlength">Telephone must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-danger" *ngIf="msg!=''">
+                    {{msg}}
+                </div>
+                <label for="email">Email</label>
+                <input type="text"  (input)="filte($event.target.value)" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email est obliggatoire required</div>
+                    <div *ngIf="f.email.errors.email">Email doit étre ---@---.--</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" (input)="filte($event.target.value)" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-danger" *ngIf="errorPass!=''">
+                    {{errorPass}}
+                </div>
+                <label for="password">Repeat Password</label>
+                <input type="password"  (input)="filte($event.target.value)" formControlName="repeatPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.repeatPassword.errors }" />
+                <div *ngIf="submitted && f.repeatPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.repeatPassword.errors.required">Password is required</div>
+                    <div *ngIf="f.repeatPassword.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Annuler
+                </button>
+            </div>
+            <hr>
+        </form>
+    </div>
+</div>
+
+
+

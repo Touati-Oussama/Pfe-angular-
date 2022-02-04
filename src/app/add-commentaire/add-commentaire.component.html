@@ -1,0 +1,25 @@
+
+<!--<div class="login-page">
+    <div class="form">
+        <h3>Demande d'encadrement</h3>
+        <form >
+            <div>
+                <label> Commentaire: </label>
+                <input type="text" formControlName="commentaire"/>
+            </div>
+            <button type="submit" [disabled]=" !Commentaire.valid ">Ajouter </button><button
+                type="reset">Annuler</button>
+        </form>
+    </div>
+</div>-->
+
+
+<form [formGroup]="Commentaire"  (ngSubmit)="add()">
+    <h3>Ajout d'un commentaire</h3>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Commentaire:</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="commentaire">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]=" !Commentaire.valid">Ajouter</button>
+    <button type="reset" class="btn btn-danger">Annuler</button>
+  </form>

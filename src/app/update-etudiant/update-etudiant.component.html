@@ -1,0 +1,68 @@
+<div class="card">
+    <a routerLink="/listeEtud"><span class="glyphicon glyphicon-arrow-left">Retour</span></a>
+    <h4 class="card-header">Demande Inscription</h4>
+    <div class="card-body">
+        <form class="user" [formGroup]="EtudiantData" (ngSubmit)="modifier()">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Modification Etudiant</h1>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text"  (input)="filte($event.target.value)"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                    <div *ngIf="f.nom.errors.required">Le nom est  obligatoire</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom</label>
+                <input type="text"  (input)="filte($event.target.value)" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                    <div *ngIf="f.prenom.errors.required">Le prenom est obligatoire</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Telephone">Telephone</label>
+                <input type="number"  (input)="filte($event.target.value)"  formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
+                <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                    <div *ngIf="f.telephone.errors.required">Le Telephone est obligatoire</div>
+                    <div *ngIf="f.telephone.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="alert alert-danger" *ngIf="msg!=''">
+                    {{msg}}
+                </div>
+                <label for="email">Email</label>
+                <input type="text" formControlName="email"   (input)="filte($event.target.value)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email est obliggatoire required</div>
+                    <div *ngIf="f.email.errors.email">Email doit étre ---@---.--</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password"  (input)="filte($event.target.value)"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button  class="btn btn-primary">
+                    Register
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Annuler
+                </button>
+            </div>
+            <hr>
+            <div class="alert alert-success" *ngIf="successMsg!=''">
+                {{successMsg}}
+            </div>
+            <div class="alert alert-danger" *ngIf="errorMsg!=''">
+                {{errorMsg}}
+            </div>
+        </form>
+    </div>
+</div>

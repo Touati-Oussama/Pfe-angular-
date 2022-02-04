@@ -1,0 +1,58 @@
+
+    <div *ngIf="verif">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error !</strong> Vous avez déja un encadreur !.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+    </div>
+
+    <div class="container-fluid" *ngIf="!verif">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Liste des encadreurs</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Voici la liste des encadreurs disponibles</h6>
+            </div>
+            <input type="search" placeholder="Search">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr *ngFor="let d of enseignants" >
+                                <td>{{d.ncen}}</td>
+                                <td>{{d.nom}}</td>
+                                <td>{{d.prenom}}</td>
+                                <td>{{d.email}}</td>
+                               <td> <button class="btn btn-primary" [routerLink]="'add/' + authService.userId + '/' + d.ncen">Demande Encadrement</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+

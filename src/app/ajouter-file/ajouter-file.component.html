@@ -1,0 +1,73 @@
+<!--<div class="container row">
+    <div class="col-md-12">
+        <h1>Upload Image</h1>
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="getImage()" value="Get Image">
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
+</div>-->
+<div *ngIf="!verif">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Error !</strong> Il faut avoir un encadreur et un projet pour pouvoir deposer ton rapport !.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div *ngIf="verif">
+  <div *ngIf="currentFile" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+      attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+      {{ progress }}%
+    </div>
+  </div>
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" />
+  </label>
+
+  <button class="btn btn-success" [disabled]="!selectedFiles || nb != 0" (click)="upload()">
+    Upload
+  </button>
+
+  <div class="alert alert-success" role="alert" *ngIf="message != '' ">{{ message }}</div>
+
+  <div class="card">
+    <div class="card-header">Rapport de Stage</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileInfos">
+      <li class="list-group-item">
+        <div class="container">
+          <h5>{{file.name}}</h5> <button class="btn btn-primary btn-sm"
+            (click)="downloadFile(file.id)">Download</button>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+</div>
